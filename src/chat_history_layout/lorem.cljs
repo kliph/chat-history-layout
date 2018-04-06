@@ -11,7 +11,7 @@
     vel pellentesque libero maecenas tincidunt sem id nunc pretium posuere
     suspendisse accumsan justo tellus quis semper erat maximus vel etiam nec
     ipsum sem  aliquam nisl magna vulputate a commodo in pellentesque ac lorem
-    sed sodales bibendum nisi fermentum laoreet praesent quis metus interdum mattis"
+    sed sodales bibendum nisi fermentum laoreet praesent quis metus interdum mattis wingardium leviosa"
     (s/split #"\W+")
     set))
 

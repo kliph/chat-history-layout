@@ -1,0 +1,30 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.header {
+  background-color: purple;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+
+.chat {
+  background-color: red;
+}
+
+.history {
+  margin-bottom: 8em;
+  margin-top: 8em;
+}
+
+.choices {
+  background-color: blue;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}

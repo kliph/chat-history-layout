@@ -14,7 +14,11 @@
 
 (defn app-container []
   [:div.container {}
-   [:div.header {}]
+   [:div.header {}
+    [:ul.stats {}
+     [:li.status {} "Status 1"]
+     [:li.status {} "Status 2"]
+     [:li.status {} "Status 3"]]]
    [:div.chat {}
     [:div.history {}
      (make-history)]
