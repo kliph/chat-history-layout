@@ -12,6 +12,16 @@
   top: 0;
 }
 
+ul.stats {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+li.status {
+  display: inline;
+  width: 30vw;
+}
+
 .chat {
   background-color: red;
 }
