@@ -10,6 +10,7 @@
                  [org.clojure/clojurescript "1.10.238"]
                  [reagent "0.8.0-alpha2"]
                  [compojure "1.6.0"]
+                 [soda-ash "0.79.1"]
                  [ring/ring-jetty-adapter "1.6.2"]
                  [ring/ring-ssl "0.3.0"]
                  [environ "1.1.0"]]

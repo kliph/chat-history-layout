@@ -1,15 +1,25 @@
 (ns chat-history-layout.core
   (:require [reagent.core :as r]
             [chat-history-layout.lorem :as lorem]
+            [soda-ash.core :as sa]
             [goog.dom]))
 
 (def by-id goog.dom.getElement)
 (def get-text goog.dom.getTextContent)
 
+(defmulti history-item (fn [type props content] type))
+(defmethod history-item :li.received [type props content]
+  [sa/ListItem props
+   [sa/Icon {:name "right triangle"}]
+   content])
+(defmethod history-item :li.sent [type props content]
+  [sa/ListItem (merge props {:className "sent"})
+   content])
+
 (defn make-history []
   (let [logs (take 50 (cycle
-                       [(fn [] [:li.received {:key (gensym)} (lorem/sentence)])
-                        (fn [] [:li.sent {:key (gensym)} (lorem/sentence)])]))]
+                       [(fn [] (history-item :li.received {:key (gensym)} (lorem/sentence)))
+                        (fn [] (history-item :li.sent {:key (gensym)} (lorem/sentence)))]))]
     [:ul {}
      (map (fn [f] (f)) logs)]))
 
@@ -27,7 +37,7 @@
   (let [elt (.-target e)
         text (get-text elt)
         new-tag (@state :next-message)
-        new-message [new-tag {:key (gensym)} text]
+        new-message (history-item new-tag {:key (gensym)} text)
         new-next-message (next-message new-tag)
         history (@state :history)
         new-history (conj history new-message)
@@ -37,21 +47,34 @@
 
     (swap! state merge updated-state)))
 
+(defn history []
+  [sa/ListSA {:className "history"}
+   (@state :history)])
+
 (defn app-container []
-  [:div.container {}
-   [:div.header {}
-    [:ul.stats {}
-     [:li.status {} "Status 1"]
-     [:li.status {} "Status 2"]
-     [:li.status {} "Status 3"]]]
+  [sa/Container {}
+   [sa/Menu {:fixed "top"
+             :stackable true
+             :widths 3
+             :fluid true}
+    [sa/MenuItem {} "Status 1"]
+    [sa/MenuItem {} "Status 2"]
+    [sa/MenuItem {} "Status 3"]]
    [:div.chat {}
-    [:div.history {}
-     (@state :history)]
-    [:div.choices {}
-     [:ul {}
-      [:li.choice {:on-click choice-click} (get-in @state [:choices 0])]
-      [:li.choice {:on-click choice-click} (get-in @state [:choices 1])]
-      [:li.choice {:on-click choice-click} (get-in @state [:choices 2])]]]]])
+    [history]]
+   [sa/Menu {:fixed "bottom"
+             :stackable true
+             :vertical true
+             :fluid true}
+    [sa/MenuItem {:on-click choice-click
+                  :link true}
+     [sa/Header (get-in @state [:choices 0])]]
+    [sa/MenuItem {:on-click choice-click
+                  :link true}
+     [sa/Header (get-in @state [:choices 1])]]
+    [sa/MenuItem {:on-click choice-click
+                  :link true}
+     [sa/Header (get-in @state [:choices 2])]]]])
 
 (r/render-component [app-container] (by-id "app"))
 

@@ -1,56 +1,53 @@
-.container {
-  width: 100vw;
-  height: 100vh;
-  color: rgba(255, 255, 255, 0.8);
+/* .container { */
+/*   width: 100vw; */
+/*   height: 100vh; */
+/*   color: rgba(255, 255, 255, 0.8); */
+/* } */
+
+/* .header { */
+/*   background-color: purple; */
+/*   position: fixed; */
+/*   left: 0; */
+/*   right: 0; */
+/*   top: 0; */
+/* } */
+
+/* ul.stats { */
+/*   display: flex; */
+/*   flex-flow: row nowrap; */
+/* } */
+
+/* li.status { */
+/*   display: inline; */
+/*   width: 30vw; */
+/* } */
+
+/* .chat { */
+/*   background-color: red; */
+/* } */
+
+.history > ul {
+  margin-bottom: 16em;
+  margin-top: 4em;
 }
 
-.header {
-  background-color: purple;
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-}
-
-ul.stats {
-  display: flex;
-  flex-flow: row nowrap;
-}
-
-li.status {
-  display: inline;
-  width: 30vw;
-}
-
-.chat {
-  background-color: red;
-}
-
-.history {
-  margin-bottom: 8em;
-  margin-top: 8em;
-}
-
-.received {
-  display: flex;
-  flex-direction: row;
-  margin-top: 1em;
-  margin-right: 3em;
-  margin-bottom: 1em;
-}
+/* .received { */
+/*   display: flex; */
+/*   flex-direction: row; */
+/*   margin-top: 1em; */
+/*   margin-right: 3em; */
+/*   margin-bottom: 1em; */
+/* } */
 
 .sent {
   display: flex;
   flex-direction: row-reverse;
-  margin-top: 1em;
-  margin-left: 3em;
-  margin-bottom: 1em;
 }
 
-.choices {
-  background-color: blue;
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
+/* .choices { */
+/*   background-color: blue; */
+/*   position: fixed; */
+/*   left: 0; */
+/*   right: 0; */
+/*   bottom: 0; */
+/* } */
